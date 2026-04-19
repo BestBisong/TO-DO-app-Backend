@@ -27,7 +27,6 @@ export class AuthService {
   }
 
   async login(email: string, pass: string, fingerprintSource: string) {
-    // 1. Validate User Credentials
     const user = await this.userRepo.findOne({
       where: { email },
       select: ['id', 'password', 'email'],
@@ -37,12 +36,11 @@ export class AuthService {
       throw new UnauthorizedException('Invalid credentials');
     }
 
-    // 2. Create Secure Payload
     const payload = {
       sub: user.id,
       email: user.email,
-      jti: uuidv4(), // Unique ID to prevent replay attacks
-      fgp: bcrypt.hashSync(fingerprintSource, 10), // Hashed device/IP fingerprint
+      jti: uuidv4(),
+      fgp: bcrypt.hashSync(fingerprintSource, 10),
     };
 
     return {

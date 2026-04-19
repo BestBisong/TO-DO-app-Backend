@@ -26,7 +26,6 @@ export class AuthController {
     @Headers('user-agent') userAgent: string,
     @Ip() ip: string,
   ) {
-    // Logic Improvement: Combining IP and User-Agent for a stronger fingerprint
     const fingerprintSource = `${userAgent}|${ip}`;
     return this.authService.login(
       authDto.email,
