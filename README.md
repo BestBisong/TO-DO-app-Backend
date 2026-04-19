@@ -5,10 +5,15 @@ npm install
 Create a .env file in the root directory and add:
 
 DATABASE_HOST=your_host
+
 DATABASE_PORT=your_port
+
 DATABASE_USER=your_user
+
 DATABASE_PASSWORD=your_password
+
 DATABASE_NAME=your_database
+
 JWT_SECRET=your_secret
 
 
